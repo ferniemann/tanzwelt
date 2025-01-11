@@ -1,7 +1,7 @@
 <template>
   <div class="divide-y divide-gray-200 rounded-2xl border border-gray-200 shadow-sm bg-white">
     <div class="p-6 sm:px-8">
-      <h3 v-if="noTitle" class="text-lg font-medium text-gray-900">
+      <h3 v-if="noTitle !== true" class="text-lg font-medium text-gray-900">
         {{ course.title }}
       </h3>
 
