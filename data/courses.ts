@@ -130,13 +130,18 @@ export const courses = [
         time: "16:30 – 18:00",
       },
     ],
-    img: ["/assets/oh_1.jpg"],
+    img: [
+      "https://fuenf-gewinnt.de/wp-content/uploads/2023/06/20230602_202820.jpg",
+    ],
   },
   {
     title: "Welttanz Tanzkreis",
     path: "/kurse/erwachsen/tanzkreis",
     label: "Erwachsene",
     description: adultAdvanced,
+    img: [
+      "https://fuenf-gewinnt.de/wp-content/uploads/2023/06/20230602_202820.jpg",
+    ],
   },
   {
     title: "Line Dance",
@@ -150,6 +155,9 @@ export const courses = [
     path: "/kurse/alle/handicap",
     label: "Alle",
     description: handicapped,
+    img: [
+      "https://fuenf-gewinnt.de/wp-content/uploads/2023/05/20230511_170041.jpg",
+    ],
   },
   // {
   //   title: "Welttanz Anfänger (3 – 6 Jahre)",
@@ -164,3 +172,22 @@ export const courses = [
   //   description: childBeginner,
   // },
 ];
+
+export function getCategories() {
+  return courses.map((course) => course.label);
+}
+
+export function getCoursesSortedByLabel() {
+  const obj: any = {};
+
+  courses.forEach((course) => {
+    if (obj[course.label]) {
+      obj[course.label].push(course);
+      return;
+    }
+
+    obj[course.label] = [course];
+  });
+
+  return obj;
+}
