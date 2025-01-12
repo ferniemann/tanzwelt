@@ -8,7 +8,7 @@
       </span>
     </div>
     <div class="grid grid-cols-[1fr_auto]">
-      <img src="/assets/oh_1.jpg" alt="Vier Paare tanzen">
+      <img :src="currentCourse.img ? currentCourse.img : '/assets/oh_1.jpg'" :alt="currentCourse.title">
       <Card :course="currentCourse" :no-title="true" />
     </div>
     <article class="text-xl md:text-2xl my-12 leading-9">

@@ -143,10 +143,11 @@ export const courses = [
     path: "/kurse/erwachsen/line-dance",
     label: "Erwachsene",
     description: adultLineDance,
+    img: ["https://live.staticflickr.com/7439/9320362457_f59d6e815c_b.jpg"],
   },
   {
     title: "Tanzen für Menschen mit Handicap",
-    path: "/kurse/",
+    path: "/kurse/alle/handicap",
     label: "Alle",
     description: handicapped,
   },
