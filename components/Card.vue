@@ -7,7 +7,7 @@
 
       <p class="mt-2 text-gray-700">{{ course.description.shortDescription }}</p>
 
-      <p class="mt-2 sm:mt-4 flex gap-2 items-end">
+      <p class="mt-2 sm:mt-4 flex gap-2 items-end" v-if="price">
         <strong class="text-3xl font-bold text-gray-900 sm:text-4xl"> {{ course.description.price }} </strong>
 
         <span class="text-sm font-medium text-gray-700 italic">{{ course.description.unit }}</span>
@@ -51,6 +51,7 @@ defineProps({
       return course.description.shortFacts.length > 0
     }
   },
-  noTitle: Boolean
+  noTitle: Boolean,
+  price: Boolean
 })
 </script>
