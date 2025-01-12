@@ -7,15 +7,15 @@
         {{ dance }}
       </span>
     </div>
-    <div class="grid grid-cols-[1fr_auto]">
-      <img :src="currentCourse.img ? currentCourse.img : '/assets/oh_1.jpg'" :alt="currentCourse.title">
-      <Card :course="currentCourse" :no-title="true" />
+    <div class="grid md:grid-cols-[2fr_1fr] gap-24">
+      <img :src="currentCourse.img" :alt="currentCourse.title" class="rounded-2xl border border-gray-200 shadow-sm">
+      <Card :course="currentCourse" :no-title="true" :price="true" />
     </div>
     <article class="text-xl md:text-2xl my-12 leading-9">
       <h3 class="font-bold text-xl md:text-3xl mb-2">Das erwartet dich:</h3>
-      <p class="mb-4" v-for="p in currentCourse.description.paragraphs" :key="p">{{ p }}</p>
+      <p class="mb-4 leading-[1.8]" v-for="p in currentCourse.description.paragraphs" :key="p">{{ p }}</p>
     </article>
-    <div class="grid gap-12 grid-cols-1 md:grid-cols-[auto_1fr] md:gap-24 items-start">
+    <div class="grid gap-12 md:gap-48 grid-cols-1 md:grid-cols-[auto_1fr] items-start">
 
       <article class="text-xl md:text-2xl leading-9">
         <h3 class="font-bold text-xl md:text-3xl mb-2">Unterrichtszeiten:</h3>
