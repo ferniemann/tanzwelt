@@ -1,12 +1,12 @@
 <template>
-  <nav class="dropdown inline-flex md:hidden rtl:[--placement:bottom-end]">
-    <button id="dropdown-default" type="button" class="dropdown-toggle btn btn-text btn-secondary btn-square"
-      aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
+  <nav class="inline-flex md:hidden rtl:[--placement:bottom-end]">
+    <button class="dropdown-toggle btn btn-text btn-secondary btn-square" aria-haspopup="menu" aria-expanded="false"
+      aria-label="Dropdown" @click="isOpen = !isOpen">
       <span class="icon-[tabler--menu-2] dropdown-open:hidden size-5"></span>
       <span class="icon-[tabler--x] dropdown-open:block hidden size-5"></span>
     </button>
-    <ul class="dropdown-menu dropdown-open:opacity-100 hidden w-full" role="menu" aria-orientation="vertical"
-      aria-labelledby="dropdown-default">
+    <menu class="w-full absolute inset-x-0 p-2 top-full bg-white" :class="{ hidden: isOpen === false }" role="menu"
+      aria-orientation="vertical" aria-labelledby="dropdown-default">
       <li v-for="link in mainNav" :key="link" :class="getStylings(link)">
         <template v-if="link.isDropdown">
           <button id="dropdown-end-2"
@@ -31,14 +31,21 @@
       </li>
       <hr class="pb-4">
       <CTAButton to="/" text="Anmeldung" class="w-full" />
-    </ul>
+    </menu>
   </nav>
 </template>
 
 <script setup>
 import { mainNav } from "@/data/nav"
 
+const isOpen = ref(false);
+const route = useRoute();
+
 const getStylings = (link) => link.isDropdown ? "dropdown relative [--auto-close:inside] [--offset:9] [--placement:bottom-end] max-md:[--placement:bottom]" : ""
 
 const getLabelColors = (link) => link.label === "Erwachsene" ? "bg-violet-200 text-violet-700" : link.label === "Alle" ? "bg-teal-200 text-teal-700" : "bg-cyan-200 text-cyan-700"
+
+watch(() => route.path, () => {
+  isOpen.value = false
+})
 </script>

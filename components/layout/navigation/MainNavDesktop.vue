@@ -3,13 +3,14 @@
     <ul class="menu menu-horizontal gap-2 p-0 text-base ml-20">
       <li v-for="link in mainNav" :key="link" :class="getStylings(link)">
         <template v-if="link.isDropdown">
-          <button id="dropdown-end" type="button"
-            class="dropdown-toggle dropdown-open:bg-base-content/10 dropdown-open:text-base-content max-md:px-2"
-            aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
+          <button type="button" class="max-md:px-2" aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown"
+            @click="isOpen = !isOpen">
             {{ link.title }}
-            <span class="icon-[tabler--chevron-down] dropdown-open:rotate-180 size-4"></span>
+            <span class="icon-[tabler--chevron-down] size-4" :class="{ hidden: isOpen }"></span>
+            <span class="icon-[tabler--x] size-4" :class="{ hidden: isOpen === false }"></span>
+
           </button>
-          <ul class="dropdown-menu dropdown-open:opacity-100 hidden w-fit-content" role="menu"
+          <ul class="w-96 absolute top-[120%] p-2 z-50 bg-white" :class="{ hidden: isOpen === false }"
             aria-orientation="vertical" aria-labelledby="nested-dropdown">
             <li v-for="page in link.links">
 
@@ -30,7 +31,12 @@
 <script setup>
 import { mainNav } from "@/data/nav"
 
+const isOpen = ref(false);
+const route = useRoute();
+
 const getStylings = (link) => link.isDropdown ? "dropdown relative inline-flex [--auto-close:inside] [--offset:0] [--placement:bottom-end] max-md:[--placement:bottom]" : ""
 
 const getLabelColors = (link) => link.label === "Erwachsene" ? "bg-violet-200 text-violet-700" : link.label === "Alle" ? "bg-teal-200 text-teal-700" : "bg-cyan-200 text-cyan-700"
+
+watch(() => route.path, () => isOpen.value = false)
 </script>
