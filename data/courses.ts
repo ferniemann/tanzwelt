@@ -39,6 +39,16 @@ const adultBeginner: CourseDescription = {
 const adultAdvanced: CourseDescription = {
   price: "36 €",
   unit: "pro Monat",
+  dances: [
+    "Discofox",
+    "Cha Cha Cha",
+    "Rumba",
+    "Jive",
+    "Langsamer Walzer",
+    "Wiener Walzer",
+    "Tango",
+    "Modetänze",
+  ],
   shortDescription: "Für die Fortgeschrittenen mit Vorkenntnissen.",
   shortFacts: ["freitags und/oder sonntags", "Ab Bronze, Silber, Gold"],
   paragraphs: [
@@ -51,12 +61,16 @@ const adultLineDance: CourseDescription = {
   unit: "pro Kurs",
   dances: ["Line Dance"],
   shortDescription: "Gemeinsam tanzen, lachen, den Rhythmus spüren!",
-  shortFacts: ["freitags und/oder sonntags", "bis zu 2 Termine pro Woche", "1 x kostenlose Probestunde"],
+  shortFacts: [
+    "freitags und/oder sonntags",
+    "bis zu 2 Termine pro Woche",
+    "1 x kostenlose Probestunde",
+  ],
   paragraphs: [
     "Erlebe die Freude am Tanzen und entdecke Line Dance – den geselligen Tanzstil, der Rhythmus, Bewegung und Gemeinschaft verbindet. Ob Anfänger oder Tanzprofi, jung geblieben oder erfahren im Leben: Line Dance bietet dir die Möglichkeit, ohne Tanzpartner Schritt für Schritt in die Welt der Country-Musik und moderner Beats einzutauchen. Gemeinsam in der Gruppe tanzen wir zu eingängigen Melodien und lassen uns vom Takt mitreißen – Spaß und gute Laune garantiert!",
-    "Unsere Line-Dance-Kurse sind perfekt, um neue Leute kennenzulernen, den Alltag hinter sich zu lassen und fit zu bleiben. Mit klaren Schrittfolgen und leicht verständlichen Anleitungen sorgen wir dafür, dass wirklich jeder den Einstieg findet. Komm vorbei und lass dich von der Begeisterung anstecken – dein nächster Lieblingshobby wartet schon auf dich!"
-  ]
-}
+    "Unsere Line-Dance-Kurse sind perfekt, um neue Leute kennenzulernen, den Alltag hinter sich zu lassen und fit zu bleiben. Mit klaren Schrittfolgen und leicht verständlichen Anleitungen sorgen wir dafür, dass wirklich jeder den Einstieg findet. Komm vorbei und lass dich von der Begeisterung anstecken – dein nächster Lieblingshobby wartet schon auf dich!",
+  ],
+};
 
 // Tanzworkshop für Menschen mit Handicap
 const handicapped: CourseDescription = {
@@ -123,6 +137,12 @@ export const courses = [
     path: "/kurse/erwachsen/tanzkreis",
     label: "Erwachsene",
     description: adultAdvanced,
+  },
+  {
+    title: "Line Dance",
+    path: "/kurse/erwachsen/line-dance",
+    label: "Erwachsene",
+    description: adultLineDance,
   },
   {
     title: "Tanzen für Menschen mit Handicap",
