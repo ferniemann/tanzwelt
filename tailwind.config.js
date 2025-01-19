@@ -1,3 +1,6 @@
+import * as flyonui from "flyonui";
+import * as flyonuiPlugin from "flyonui/plugin";
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -12,11 +15,16 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        display: ["Pattaya"],
+      },
       animation: {
         blur: "blur 1s linear",
+        blurSlow: "blur 3s linear",
         moveInLeft: "moveInLeft 1s linear",
         moveInRight: "moveInRight 1s linear",
         fadeIn: "fadeIn 1s linear",
+        fadeInSlow: "fadeIn 3s linear",
       },
       keyframes: {
         blur: {
@@ -54,7 +62,7 @@ export default {
       },
     },
   },
-  plugins: [require("flyonui"), require("flyonui/plugin")],
+  plugins: [flyonui, flyonuiPlugin],
   flyonui: {
     themes: ["light"],
   },
