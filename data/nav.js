@@ -8,7 +8,7 @@ export const mainNav = [
   },
   {
     title: "Über die Tanzschule",
-    path: "/",
+    path: "/ueber",
   },
   {
     title: "Kontakt",

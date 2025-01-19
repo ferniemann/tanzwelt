@@ -1,11 +1,11 @@
 <template>
-  <div class="divide-y divide-gray-200 rounded-2xl border border-gray-200 shadow-sm bg-white">
+  <div class="divide-y divide-gray-200 rounded-md md:rounded-2xl border border-gray-200 shadow-sm bg-white">
     <div class="p-6 sm:px-8">
-      <h3 v-if="noTitle !== true" class="text-lg font-medium text-gray-900">
+      <h3 v-if="noTitle !== true" class="text-lg font-bold text-rose-900">
         {{ course.title }}
       </h3>
 
-      <p class="mt-2 text-gray-700">{{ course.description.shortDescription }}</p>
+      <p class="my-6 text-gray-700 text-sm">{{ course.description.shortDescription }}</p>
 
       <p class="mt-2 sm:mt-4 flex gap-2 items-end" v-if="price">
         <strong class="text-3xl font-bold text-gray-900 sm:text-4xl"> {{ course.description.price }} </strong>
@@ -13,19 +13,20 @@
         <span class="text-sm font-medium text-gray-700 italic">{{ course.description.unit }}</span>
       </p>
 
-      <NuxtLink v-if="noTitle === false"
-        class="mt-4 block rounded border border-rose-900 bg-rose-900 px-12 py-3 text-center text-sm font-medium text-white hover:bg-transparent hover:text-rose-900 focus:outline-none focus:ring active:text-rose-500 sm:mt-6"
-        :to="course.path">
-        Mehr Informationen und Anmeldung
-      </NuxtLink>
-      <NuxtLink v-else
-        class="mt-4 block rounded border border-rose-900 bg-rose-900 px-12 py-3 text-center text-sm font-medium text-white hover:bg-transparent hover:text-rose-900 focus:outline-none focus:ring active:text-rose-500 sm:mt-6"
-        to="#anmeldung">
+      <div v-if="noTitle === false">
+        <NuxtLink class="btn-rose" :to="course.path">
+          Kursdetails
+        </NuxtLink>
+        <NuxtLink class="btn-rose-outline" :to="`${course.path}#anmeldung`">
+          Anmeldung
+        </NuxtLink>
+      </div>
+      <NuxtLink v-else class="btn-rose" to="#anmeldung">
         Zur Anmeldung
       </NuxtLink>
     </div>
 
-    <div class="p-6 sm:px-8">
+    <div class="p-6 sm:px-8" v-if="!short">
       <p class="text-lg font-medium text-gray-900 sm:text-xl">Kurz und knapp:</p>
 
       <ul class="mt-2 space-y-2 sm:mt-4">
@@ -52,6 +53,17 @@ defineProps({
     }
   },
   noTitle: Boolean,
-  price: Boolean
+  price: Boolean,
+  short: Boolean
 })
 </script>
+
+<style scoped>
+.btn-rose {
+  @apply mt-4 block rounded border border-rose-900 bg-rose-900 px-12 py-3 text-center text-sm font-medium text-white hover:bg-transparent hover:text-rose-900 focus:outline-none focus:ring active:text-rose-500 sm:mt-6
+}
+
+.btn-rose-outline {
+  @apply mt-4 block rounded border border-rose-900 bg-white px-12 py-3 text-center text-sm font-medium text-rose-900 hover:bg-rose-200/50 hover:text-rose-900 focus:outline-none focus:ring active:text-rose-500 sm:mt-6
+}
+</style>

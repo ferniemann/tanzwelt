@@ -1,6 +1,6 @@
 <template>
   <form class="w-fit" @submit.prevent>
-    <div class="grid w-fit">
+    <div class="grid w-fit mb-8">
       <span class="font-bold">Für welchen Kurs meldest du dich an?</span>
       <select name="course" id="course" v-model="form.chosenCourse" class="py-2 px-6 border border-gray-300 rounded"
         :disabled="isCourseExplicit">
@@ -9,7 +9,7 @@
         </option>
       </select>
     </div>
-    <div class="my-8">
+    <div class="my-8" v-if="single !== true">
       <span class="font-bold">Wen möchtest du anmelden?</span>
       <div class="flex gap-2">
         <input type="radio" name="person" id="single"
@@ -99,7 +99,7 @@ import { courses } from '~/data/courses';
 
 const courseList = courses.map((course) => course.title)
 
-const props = defineProps(["course"])
+const props = defineProps(["course", "single"])
 
 const isCourseExplicit = computed(() => courseList.includes(props.course))
 

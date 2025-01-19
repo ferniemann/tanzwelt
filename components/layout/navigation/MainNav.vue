@@ -30,7 +30,7 @@
         <NuxtLink v-else :to="link.path" class="dropdown-item">{{ link.title }}</NuxtLink>
       </li>
       <hr class="pb-4">
-      <CTAButton to="/" text="Anmeldung" class="w-full" />
+      <CTAButton to="/kurse" text="Anmeldung" class="w-full" />
     </menu>
   </nav>
 </template>

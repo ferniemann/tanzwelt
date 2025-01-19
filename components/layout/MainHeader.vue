@@ -12,7 +12,7 @@
       <LayoutNavigationMainNavDesktop />
       <div class="navbar-end items-center gap-4">
         <LayoutNavigationMainNav />
-        <CTAButton to="/" text="Anmeldung" class="hidden md:flex" />
+        <CTAButton to="/kurse" text="Anmeldung" class="hidden md:flex" />
       </div>
     </nav>
   </header>
