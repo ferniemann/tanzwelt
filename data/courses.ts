@@ -37,7 +37,7 @@ const adultBeginner: CourseDescription = {
 
 // Erwachsene: Welttanz Tanzkreis
 const adultAdvanced: CourseDescription = {
-  price: "36 €",
+  price: "45 €",
   unit: "pro Monat",
   dances: [
     "Discofox",
