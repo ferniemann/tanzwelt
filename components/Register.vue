@@ -2,7 +2,7 @@
   <form class="w-fit" @submit.prevent>
     <div class="grid w-fit mb-8">
       <span class="font-bold">Für welchen Kurs meldest du dich an?</span>
-      <select name="course" id="course" v-model="form.chosenCourse" class="py-2 px-6 border border-gray-300 rounded"
+      <select name="course" id="course" v-model="props.course" class="py-2 px-6 border border-gray-300 rounded"
         :disabled="isCourseExplicit">
         <option v-for="singleCourse in courseList" :value="singleCourse">
           {{ singleCourse }}
@@ -19,7 +19,7 @@
         <input type="radio" name="person" id="both"
           class="sr-only [&:checked+label]:bg-rose-100 [&:checked+label]:border-rose-900 [&:checked+label]:font-bold"
           v-model="form.withPartner" :value="true" required>
-        <label for="both" class="bg-white py-2 px-6 border-2 rounded">Mich und mein/e Partner/in</label>
+        <label for="both" class="bg-white py-2 px-6 border-2 rounded">Mein/e Partner/in und mich</label>
       </div>
     </div>
     <div>
@@ -95,9 +95,10 @@
 </template>
 
 <script setup>
-import { courses } from '~/data/courses';
+const store = useCoursesStore()
+const courses = store.courses
 
-const courseList = courses.map((course) => course.title)
+const courseList = courses.map((course) => course.titel)
 
 const props = defineProps(["course", "single"])
 

@@ -14,10 +14,8 @@
             aria-orientation="vertical" aria-labelledby="nested-dropdown">
             <li v-for="page in link.links">
 
-              <NuxtLink class="dropdown-item flex items-center gap-4" :to="page.path"><small
-                  class="py-1 px-3 rounded-full" :class="getLabelColors(page)">{{
-                    page.label }}</small> {{
-                    page.title }}
+              <NuxtLink class="dropdown-item" :to="page.path">
+                {{ page.title }}
               </NuxtLink>
             </li>
           </ul>
@@ -29,7 +27,28 @@
 </template>
 
 <script setup>
-import { mainNav } from "@/data/nav"
+const store = useCoursesStore()
+await store.getAllCourses()
+
+const mainNav = computed(() => [
+  {
+    title: 'Tanzkurse',
+    isDropdown: true,
+    links: store.courses.map((course) => ({
+      title: course.titel,
+      path: '/kurse/' + course.id,
+    })),
+  },
+  {
+    title: 'Über die Tanzschule',
+    path: '/ueber',
+  },
+  {
+    title: 'Kontakt',
+    path: '/',
+  },
+])
+
 
 const isOpen = ref(false);
 const route = useRoute();

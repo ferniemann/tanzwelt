@@ -2,22 +2,22 @@
   <div class="divide-y divide-gray-200 rounded-md md:rounded-2xl border border-gray-200 shadow-sm bg-white">
     <div class="p-6 sm:px-8">
       <h3 v-if="noTitle !== true" class="text-lg font-bold text-rose-900">
-        {{ course.title }}
+        {{ course.titel }}
       </h3>
 
-      <p class="my-6 text-gray-700 text-sm">{{ course.description.shortDescription }}</p>
+      <p class="my-6 text-gray-700 text-sm">{{ course.der_kurs_in_einem_satz }}</p>
 
       <p class="mt-2 sm:mt-4 flex gap-2 items-end" v-if="price">
-        <strong class="text-3xl font-bold text-gray-900 sm:text-4xl"> {{ course.description.price }} </strong>
+        <strong class="text-3xl font-bold text-gray-900 sm:text-4xl"> {{ course.preis }} €</strong>
 
-        <span class="text-sm font-medium text-gray-700 italic">{{ course.description.unit }}</span>
+        <span class="text-sm font-medium text-gray-700 italic">{{ course.einheit_des_preises }}</span>
       </p>
 
       <div v-if="noTitle === false">
-        <NuxtLink class="btn-rose" :to="course.path">
+        <NuxtLink class="btn-rose" :to="'/kurse/' + course.id">
           Kursdetails
         </NuxtLink>
-        <NuxtLink class="btn-rose-outline" :to="`${course.path}#anmeldung`">
+        <NuxtLink class="btn-rose-outline" :to="'/kurse/' + course.id">
           Anmeldung
         </NuxtLink>
       </div>
@@ -30,8 +30,7 @@
       <p class="text-lg font-medium text-gray-900 sm:text-xl">Kurz und knapp:</p>
 
       <ul class="mt-2 space-y-2 sm:mt-4">
-        <li class="grid grid-cols-[2rem_1fr] items-center gap-1" v-for="fact in course.description.shortFacts"
-          :key="fact">
+        <li class="grid grid-cols-[2rem_1fr] items-center gap-1" v-for="fact in course.kurz_und_knapp" :key="fact">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
             stroke="currentColor" class="size-5 text-rose-700">
             <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
@@ -47,10 +46,7 @@
 <script setup>
 defineProps({
   course: {
-    type: Object,
-    validator(course) {
-      return course.description.shortFacts.length > 0
-    }
+    type: Object
   },
   noTitle: Boolean,
   price: Boolean,
