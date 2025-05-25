@@ -1,4 +1,10 @@
-import { courses } from "@/data/courses";
+const store = useCoursesStore();
+
+if (!store.courses) store.getAllCourses();
+
+const courses = store.courses.map((course) => {
+  return { title: course.titel, path: "/kurse/" + course.id };
+});
 
 export const mainNav = [
   {
